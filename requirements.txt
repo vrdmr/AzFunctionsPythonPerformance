@@ -2,3 +2,5 @@ azure-functions
 requests
 stressypy
 aiohttp-requests==0.1.2
+grpcio
+grpcio-tools~=1.26.0

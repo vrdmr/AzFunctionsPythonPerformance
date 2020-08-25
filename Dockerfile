@@ -3,26 +3,26 @@
 FROM mcr.microsoft.com/azure-functions/python:3.0-python3.7
 
 RUN cd /azure-functions-host/workers/python/3.6 && \
-    sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' OSX/X64/azure_functions_worker/dispatcher.py && \
-    sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' LINUX/X64/azure_functions_worker/dispatcher.py && \
-    sed -i 's/max_workers=1/max_workers=2\ \*\ multiprocessing.cpu_count\(\)\ \+\ 1/g' OSX/X64/azure_functions_worker/dispatcher.py && \
-    sed -i 's/max_workers=1/max_workers=2\ \*\ multiprocessing.cpu_count\(\)\ \+\ 1/g' LINUX/X64/azure_functions_worker/dispatcher.py
+    # sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' OSX/X64/azure_functions_worker/dispatcher.py && \
+    # sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' LINUX/X64/azure_functions_worker/dispatcher.py && \
+    sed -i 's/max_workers=1/max_workers=None/g' OSX/X64/azure_functions_worker/dispatcher.py && \
+    sed -i 's/max_workers=1/max_workers=None/g' LINUX/X64/azure_functions_worker/dispatcher.py
 
 RUN cd /azure-functions-host/workers/python/3.7 && \
-    sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' OSX/X64/azure_functions_worker/dispatcher.py && \
-    sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' LINUX/X64/azure_functions_worker/dispatcher.py && \
-    sed -i 's/max_workers=1/max_workers=2\ \*\ multiprocessing.cpu_count\(\)\ \+\ 1/g' OSX/X64/azure_functions_worker/dispatcher.py && \
-    sed -i 's/max_workers=1/max_workers=2\ \*\ multiprocessing.cpu_count\(\)\ \+\ 1/g' LINUX/X64/azure_functions_worker/dispatcher.py
+    # sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' OSX/X64/azure_functions_worker/dispatcher.py && \
+    # sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' LINUX/X64/azure_functions_worker/dispatcher.py && \
+    sed -i 's/max_workers=1/max_workers=None/g' OSX/X64/azure_functions_worker/dispatcher.py && \
+    sed -i 's/max_workers=1/max_workers=None/g' LINUX/X64/azure_functions_worker/dispatcher.py
 
 RUN cd /azure-functions-host/workers/python/3.8 && \
-    sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' OSX/X64/azure_functions_worker/dispatcher.py && \
-    sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' LINUX/X64/azure_functions_worker/dispatcher.py && \
-    sed -i 's/max_workers=1/max_workers=2\ \*\ multiprocessing.cpu_count\(\)\ \+\ 1/g' OSX/X64/azure_functions_worker/dispatcher.py && \
-    sed -i 's/max_workers=1/max_workers=2\ \*\ multiprocessing.cpu_count\(\)\ \+\ 1/g' LINUX/X64/azure_functions_worker/dispatcher.py
+    # sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' OSX/X64/azure_functions_worker/dispatcher.py && \
+    # sed -i 's/import\ inspect/import\ inspect\nimport\ multiprocessing\n/g' LINUX/X64/azure_functions_worker/dispatcher.py && \
+    sed -i 's/max_workers=1/max_workers=None/g' OSX/X64/azure_functions_worker/dispatcher.py && \
+    sed -i 's/max_workers=1/max_workers=None/g' LINUX/X64/azure_functions_worker/dispatcher.py
 
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
-    FUNCTIONS_WORKER_PROCESS_COUNT=4
+    FUNCTIONS_WORKER_PROCESS_COUNT=2
 
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
@@ -30,3 +30,16 @@ RUN pip install -r /requirements.txt
 COPY . /home/site/wwwroot
 
 CMD [ "/azure-functions-host/Microsoft.Azure.WebJobs.Script.WebHost" ]
+
+
+# docker build --tag azfuncperf-wrk4-stp-1:1.0.0 .
+# docker build --tag azfuncperf-wrk2-stp-1:1.0.0 .
+# docker build --tag azfuncperf-wrk1-stp-1:1.0.0 .
+
+# docker build --tag azfuncperf-wrk4-stp-2np1:1.0.0 .
+# docker build --tag azfuncperf-wrk2-stp-2np1:1.0.0 .
+# docker build --tag azfuncperf-wrk1-stp-2np1:1.0.0 .
+
+# docker build --tag azfuncperf-wrk4-stp-none:1.0.0 .
+# docker build --tag azfuncperf-wrk2-stp-none:1.0.0 .
+# docker build --tag azfuncperf-wrk1-stp-none:1.0.0 .

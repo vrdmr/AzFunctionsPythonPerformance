@@ -93,3 +93,5 @@ obj
 appsettings.json
 local.settings.json
 __pycache__
+.python_packages
+.venv
