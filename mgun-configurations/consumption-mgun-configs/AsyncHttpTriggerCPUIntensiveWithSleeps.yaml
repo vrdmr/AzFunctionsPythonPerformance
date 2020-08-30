@@ -1,0 +1,10 @@
+concurrency: 2
+loopCount: 5
+timeout: 500000
+scheme: http
+host: localhost
+port: 7071
+
+requests:
+  - RANDOM:
+    - GET: /api/AsyncHttpTriggerCPUIntensiveWithSleeps

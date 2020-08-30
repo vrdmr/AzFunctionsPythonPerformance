@@ -4,8 +4,8 @@ import sys
 
 import azure.functions as func
 
-# create 300MB random object
-big_object = os.urandom(300*1024)
+# create ~315MB random object
+big_object = os.urandom(300*1024*1024 )
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:

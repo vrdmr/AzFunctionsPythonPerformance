@@ -1,0 +1,21 @@
+concurrency: 10
+loopCount: 1
+timeout: 500000
+scheme: http
+host: localhost
+port: 8082
+
+requests:
+  - RANDOM:
+    - GET: /api/SyncHttpTriggerWithSyncRequests
+
+
+
+
+
+
+#  GET: /api/AsyncHttpTriggerCPUIntensive
+#  GET: /api/AsyncHttpTriggerWithAsyncRequest
+#  GET: /api/AsyncHttpTriggerWithSyncRequests
+#  GET: /api/SyncHttpTriggerCPUIntensive
+#  GET: /api/SyncHttpTriggerWithSyncRequests
