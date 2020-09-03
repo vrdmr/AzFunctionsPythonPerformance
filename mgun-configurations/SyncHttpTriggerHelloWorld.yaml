@@ -1,5 +1,5 @@
-concurrency: 50
-loopCount: 10
+concurrency: 100
+loopCount: 100
 timeout: 500000
 scheme: http
 host: localhost
@@ -7,15 +7,10 @@ port: 7071
 
 requests:
   - RANDOM:
-    - GET: /api/SyncHttpTriggerWithSyncRequests
+    - GET: /api/SyncHttpTriggerHelloWorld
 
-
-
-
-
-
+#  GET: /api/SyncHttpTriggerCPUIntensive
 #  GET: /api/AsyncHttpTriggerCPUIntensive
+#  GET: /api/SyncHttpTriggerWithSyncRequests
 #  GET: /api/AsyncHttpTriggerWithAsyncRequest
 #  GET: /api/AsyncHttpTriggerWithSyncRequests
-#  GET: /api/SyncHttpTriggerCPUIntensive
-#  GET: /api/SyncHttpTriggerWithSyncRequests

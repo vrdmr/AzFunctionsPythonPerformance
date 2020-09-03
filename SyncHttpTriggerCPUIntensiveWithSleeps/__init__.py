@@ -8,6 +8,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # By Michael Rouse
     pi = 0
     accuracy = 1000000
+    
 
     for i in range(0, accuracy):
         pi += ((4.0 * (-1)**i) / (2*i + 1))
