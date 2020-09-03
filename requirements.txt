@@ -4,4 +4,7 @@ requests==2.22.0
 aiohttp-requests
 grpcio
 grpcio-tools~=1.26.0
-# azure-storage blob expirments
+Pillow
+pytest
+aiohttp
+aiofiles
