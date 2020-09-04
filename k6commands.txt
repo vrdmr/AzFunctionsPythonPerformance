@@ -10,11 +10,14 @@ docker run -p 8008:80 --cpus 1 --memory 1.5G --name pywinder-nologging-wrk1-stp-
 docker run -p 8009:80 --cpus 1 --memory 1.5G --name pywinder-nologging-wrk4-stp-10   vrdmr/pywinder-nologging-wrk4-stp-10:1.0.0
 
 
+k6 run ./k6-configuration/sync/htmlparsing.js
+k6 run ./k6-configuration/sync/helloworld.js
+
+
+k6 run ./k6-configuration/sync/sendingasyncrequests.js
+k6 run ./k6-configuration/sync/sendingsyncrequests.js
+k6 run ./k6-configuration/sync/mixworkloads.js
+
 k6 run ./k6-configuration/async/sendingasyncrequests.js
 k6 run ./k6-configuration/async/sendingsyncrequests.js
 k6 run ./k6-configuration/async/helloworld.js
-k6 run ./k6-configuration/sync/htmlparsing.js
-k6 run ./k6-configuration/sync/sendingasyncrequests.js
-k6 run ./k6-configuration/sync/sendingsyncrequests.js
-k6 run ./k6-configuration/sync/helloworld.js
-k6 run ./k6-configuration/sync/mixworkloads.js
