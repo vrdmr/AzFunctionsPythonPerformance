@@ -3,11 +3,10 @@ loopCount: 100
 timeout: 500000
 scheme: http
 host: localhost
-port: 7071
+port: 8080
 
 requests:
-  - RANDOM:
-    - GET: /api/SyncHttpTriggerHelloWorld
+  - GET: /api/SyncHttpTriggerHelloWorld
 
 #  GET: /api/SyncHttpTriggerCPUIntensive
 #  GET: /api/AsyncHttpTriggerCPUIntensive

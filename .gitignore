@@ -96,3 +96,7 @@ __pycache__
 .python_packages
 .venv
 proxies.json
+
+.DS_Store
+
+loaderio*
