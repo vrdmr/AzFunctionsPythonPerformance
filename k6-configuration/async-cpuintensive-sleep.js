@@ -1,10 +1,8 @@
-import { check, group, sleep } from "k6";
+import { check } from "k6";
 import { Rate } from "k6/metrics";
 import http from "k6/http";
 
-var port = 8000
-
-const fileContents = open('./largish_body.html')
+var PORT = __ENV.PORT
 
 // A custom metric to track failure rates
 var failureRate = new Rate("check_failure_rate");
@@ -12,11 +10,10 @@ var failureRate = new Rate("check_failure_rate");
 // Options
 export let options = {
     stages: [
-        // { target: 1, duration: "15s" },
         // Linearly ramp up from 1 to 50 VUs during first minute
-        { target: 100, duration: "30s" },
+        { target: 25, duration: "1m" },
         // Hold at 50 VUs for the next 3 minutes and 30 seconds
-        { target: 100, duration: "4m15s" },
+        { target: 25, duration: "3m45s" },
         // Linearly ramp down from 50 to 0 50 VUs over the last 30 seconds
         { target: 0, duration: "15s" }
         // Total execution time will be ~5 minutes
@@ -36,14 +33,13 @@ export let options = {
 
 // Main function
 export default function () {
-    let response = http.post(`http://localhost:${port}/api/SyncHttpTriggerHtmlParser`, fileContents);
-
+    let response = http.get(`http://localhost:${PORT}/api/AsyncHttpTriggerCPUIntensiveWithSleeps`);
+    
     // check() returns false if any of the specified conditions fail
     let checkRes = check(response, {
-        "status is 200": (r) => r.status === 200,
-        "content is present": (r) => r.body.indexOf("StartTagCount") !== -1,
+        "status is 200": (r) => r.status === 200
     });
-    
+
     // We reverse the check() result since we want to count the failures
     failureRate.add(!checkRes);
 }

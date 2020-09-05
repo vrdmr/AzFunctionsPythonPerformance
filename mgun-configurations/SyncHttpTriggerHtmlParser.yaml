@@ -21,18 +21,3 @@ requests:
         page, just like this <strong>p</strong> tag and its contents.</p><p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p><p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p></body></html>
       headers:
         Content-type: text/plain
-
-Dimensions
-
-FunctionScenarios = ["HTMLParsing", "SendingRequests", "SendingRequestsAsync", "Ping", "MixWorkload"]
-function_type = ["async", "sync"]
-Threadpool_Count = [1, 5, 10]
-Plans = ["Consumption", "EP3"]
-Workers_Count = [1, 4]
-
-for fs in FunctionScenarios:
-  for ft in function_type:
-    for tpc in Threadpool_Count:
-      for p in Plans:
-        for wc in Workers_Count:
-          print(f"{ft}{fs},{p},{wc},{tpc}")

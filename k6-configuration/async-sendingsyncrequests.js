@@ -1,8 +1,8 @@
-import { check, group, sleep } from "k6";
+import { check } from "k6";
 import { Rate } from "k6/metrics";
 import http from "k6/http";
 
-var port = 8000
+var PORT = __ENV.PORT
 
 // A custom metric to track failure rates
 var failureRate = new Rate("check_failure_rate");
@@ -33,12 +33,11 @@ export let options = {
 
 // Main function
 export default function () {
-    let response = http.get(`http://localhost:${port}/api/AsyncHttpTriggerHelloWorld`);
-    
+    let response = http.get(`http://localhost:${PORT}/api/AsyncHttpTriggerWithSyncRequests`);
+
     // check() returns false if any of the specified conditions fail
     let checkRes = check(response, {
-        "status is 200": (r) => r.status === 200,
-        "content is present": (r) => r.body.indexOf("This HTTP triggered function executed successfully") !== -1,
+        "status is 200": (r) => r.status === 200
     });
 
     // We reverse the check() result since we want to count the failures
