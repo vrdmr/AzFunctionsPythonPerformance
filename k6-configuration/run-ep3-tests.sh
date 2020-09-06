@@ -6,17 +6,17 @@ export CPU=4
 export MEMORY=14g
 
 runk6tests () {
-PORT=$1 k6 run --summary-export=asynccpuintensivesleep-$PLAN-$2-summaryexport.json     async-cpuintensive-sleep.js
-PORT=$1 k6 run --summary-export=asynccpuintensive-$PLAN-$2-summaryexport.json          async-cpuintensive.js
-PORT=$1 k6 run --summary-export=asynchelloworld-$PLAN-$2-summaryexport.json            async-helloworld.js
-PORT=$1 k6 run --summary-export=asyncsendingasyncrequests-$PLAN-$2-summaryexport.json  async-sendingasyncrequests.js
-PORT=$1 k6 run --summary-export=asyncsendingsyncrequests-$PLAN-$2-summaryexport.json   async-sendingsyncrequests.js
-PORT=$1 k6 run --summary-export=synccpuintensivesleep-$PLAN-$2-summaryexport.json      sync-cpuintensive-sleep.js
-PORT=$1 k6 run --summary-export=synccpuintensive-$PLAN-$2-summaryexport.json           sync-cpuintensive.js
-PORT=$1 k6 run --summary-export=synchelloworld-$PLAN-$2-summaryexport.json             sync-helloworld.js
-PORT=$1 k6 run --summary-export=syncmixworkloads-$PLAN-$2-summaryexport.json           sync-mixworkloads.js
-PORT=$1 k6 run --summary-export=syncsendingsyncrequests-$PLAN-$2-summaryexport.json    sync-sendingsyncrequests.js
-PORT=$1 k6 run --summary-export=synchtmlparsing-$PLAN-$2-summaryexport.json            sync-htmlparsing.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/asynccpuintensivesleep-$PLAN-$2-summaryexport.json     async-cpuintensive-sleep.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/asynccpuintensive-$PLAN-$2-summaryexport.json          async-cpuintensive.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/asynchelloworld-$PLAN-$2-summaryexport.json            async-helloworld.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/asyncsendingasyncrequests-$PLAN-$2-summaryexport.json  async-sendingasyncrequests.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/asyncsendingsyncrequests-$PLAN-$2-summaryexport.json   async-sendingsyncrequests.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/synccpuintensivesleep-$PLAN-$2-summaryexport.json      sync-cpuintensive-sleep.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/synccpuintensive-$PLAN-$2-summaryexport.json           sync-cpuintensive.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/synchelloworld-$PLAN-$2-summaryexport.json             sync-helloworld.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/syncmixworkloads-$PLAN-$2-summaryexport.json           sync-mixworkloads.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/syncsendingsyncrequests-$PLAN-$2-summaryexport.json    sync-sendingsyncrequests.js
+  PORT=$1 k6 run --summary-export=$RunOutputFolder/synchtmlparsing-$PLAN-$2-summaryexport.json            sync-htmlparsing.js
 }
 
 cleanup_docker_container() {

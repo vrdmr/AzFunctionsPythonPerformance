@@ -100,4 +100,5 @@ proxies.json
 .DS_Store
 
 loaderio*
-output
+output/*
+outgoing
