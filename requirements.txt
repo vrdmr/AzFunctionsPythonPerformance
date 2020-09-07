@@ -9,3 +9,5 @@ pytest
 aiohttp
 aiofiles
 pandas
+jupyterlab
+py-spy

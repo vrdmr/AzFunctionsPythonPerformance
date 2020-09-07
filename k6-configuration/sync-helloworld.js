@@ -38,7 +38,7 @@ export default function () {
     // check() returns false if any of the specified conditions fail
     let checkRes = check(response, {
         "status is 200": (r) => r.status === 200,
-        "content is present": (r) => r.body.indexOf("This HTTP triggered function executed successfully") !== -1,
+        // "content is present": (r) => r.body.indexOf("This HTTP triggered function executed successfully") !== -1,
     });
 
     // We reverse the check() result since we want to count the failures
