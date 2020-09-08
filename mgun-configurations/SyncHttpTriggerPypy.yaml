@@ -1,9 +1,9 @@
 concurrency: 100
-loopCount: 150
+loopCount: 50
 timeout: 500000
-scheme: https
-host: pywinder-wrk1-stp-1.azurewebsites.net
-# port: 7071
+scheme: http
+host: localhost
+port: 8086
 
 requests:
   - GET: /api/SyncHttpTriggerHelloWorld
