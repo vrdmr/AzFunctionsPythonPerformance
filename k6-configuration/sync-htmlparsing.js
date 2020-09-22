@@ -2,7 +2,8 @@ import { check } from "k6";
 import { Rate } from "k6/metrics";
 import http from "k6/http";
 
-var PORT = __ENV.PORT
+var HOSTNAME = __ENV.HOSTNAME || 'localhost';
+var PORT = __ENV.PORT || '80';
 
 const fileContents = open('./largish_body.html')
 
@@ -35,14 +36,14 @@ export let options = {
 
 // Main function
 export default function () {
-    let response = http.post(`http://localhost:${PORT}/api/SyncHttpTriggerHtmlParser`, fileContents);
+    let response = http.post(`http://${HOSTNAME}:${PORT}/api/SyncHttpTriggerHtmlParser`, fileContents);
 
     // check() returns false if any of the specified conditions fail
     let checkRes = check(response, {
         "status is 200": (r) => r.status === 200,
         "content is present": (r) => r.body.indexOf("StartTagCount") !== -1,
     });
-    
+
     // We reverse the check() result since we want to count the failures
     failureRate.add(!checkRes);
 }

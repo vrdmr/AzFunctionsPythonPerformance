@@ -2,7 +2,8 @@ import { check } from "k6";
 import { Rate } from "k6/metrics";
 import http from "k6/http";
 
-var PORT = __ENV.PORT
+var HOSTNAME = __ENV.HOSTNAME || 'localhost';
+var PORT = __ENV.PORT || '80';
 
 // A custom metric to track failure rates
 var failureRate = new Rate("check_failure_rate");
@@ -33,7 +34,7 @@ export let options = {
 
 // Main function
 export default function () {
-    let response = http.get(`http://localhost:${PORT}/api/SyncHttpTriggerWithMixWorkloads`);
+    let response = http.get(`http://${HOSTNAME}:${PORT}/api/SyncHttpTriggerWithMixWorkloads`);
 
     // check() returns false if any of the specified conditions fail
     let checkRes = check(response, {
