@@ -1,5 +1,7 @@
 # To enable ssh & remote debugging on app service change the base image to the one below
-FROM mcr.microsoft.com/azure-functions/python:3.0-python3.7
+#FROM mcr.microsoft.com/azure-functions/python:3.0-python3.7
+FROM rogerxman/python:standard
+
 # FROM onlyloggingremoved:1.0.0
 
 # RUN cd /azure-functions-host/workers/python/3.6 && \
