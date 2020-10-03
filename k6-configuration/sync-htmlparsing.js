@@ -4,6 +4,7 @@ import http from "k6/http";
 
 var HOSTNAME = __ENV.HOSTNAME || 'localhost';
 var PORT = __ENV.PORT || '80';
+var PROTOCOL = __ENV.PROTOCOL || (PORT === '80' ? 'http' : 'https');
 
 const fileContents = open('./largish_body.html')
 
@@ -36,7 +37,7 @@ export let options = {
 
 // Main function
 export default function () {
-    let response = http.post(`http://${HOSTNAME}:${PORT}/api/SyncHttpTriggerHtmlParser`, fileContents);
+    let response = http.post(`${PROTOCOL}://${HOSTNAME}:${PORT}/api/SyncHttpTriggerHtmlParser`, fileContents);
 
     // check() returns false if any of the specified conditions fail
     let checkRes = check(response, {
