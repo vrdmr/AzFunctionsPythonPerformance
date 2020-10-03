@@ -4,6 +4,7 @@ import http from "k6/http";
 
 var HOSTNAME = __ENV.HOSTNAME || 'localhost';
 var PORT = __ENV.PORT || '80';
+var PROTOCOL = __ENV.PROTOCOL || (PORT === '80' ? 'http' : 'https');
 
 // A custom metric to track failure rates
 var failureRate = new Rate("check_failure_rate");
@@ -34,7 +35,7 @@ export let options = {
 
 // Main function
 export default function () {
-    let response = http.get(`http://${HOSTNAME}:${PORT}/api/AsyncHttpTriggerWithAsyncRequest`);
+    let response = http.get(`${PROTOCOL}://${HOSTNAME}:${PORT}/api/AsyncHttpTriggerWithAsyncRequest`);
 
     // check() returns false if any of the specified conditions fail
     let checkRes = check(response, {
