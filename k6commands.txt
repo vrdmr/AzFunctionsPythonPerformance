@@ -17,7 +17,7 @@ k6 run ./k6-configuration/sync/helloworld.js
 k6 run ./k6-configuration/sync/sendingsyncrequests.js
 k6 run ./k6-configuration/sync/mixworkloads.js
 
-k6 run ./k6-configuration/async/sendingasyncrequests.js - 
+k6 run ./k6-configuration/async/sendingasyncrequests.js
 k6 run ./k6-configuration/async/sendingsyncrequests.js
 k6 run ./k6-configuration/async/helloworld.js
 
