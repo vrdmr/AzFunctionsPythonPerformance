@@ -28,8 +28,6 @@ export let options = {
     thresholds: {
         // We want the 95th percentile of all HTTP request durations to be less than 500ms
         "http_req_duration": ["p(95)<5000"],
-        // Requests with the staticAsset tag should finish even faster
-        "http_req_duration{staticAsset:yes}": ["p(99)<250"],
         // Thresholds based on the custom metric we defined and use to track application failures
         "check_failure_rate": [
             // Global failure rate should be less than 1%
@@ -42,12 +40,12 @@ export let options = {
 
 // Main function
 export default function () {
-
     let response = http.get(URL);
 
     // check() returns false if any of the specified conditions fail
     let checkRes = check(response, {
-        "status is 200": (r) => r.status === 200
+        "status is 200": (r) => r.status === 200,
+        // "content is present": (r) => r.body.indexOf("This HTTP triggered function executed successfully") !== -1,
     });
 
     // We reverse the check() result since we want to count the failures

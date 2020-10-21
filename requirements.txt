@@ -3,11 +3,13 @@ stressypy
 requests==2.22.0
 aiohttp-requests
 # grpcio
-# grpcio-tools~=1.26.0
+# grpcio-tools #~=1.26.0
 Pillow
 pytest
 aiohttp
 aiofiles
-pandas
-jupyterlab
+# pandas
+# jupyterlab
 py-spy
+pydevd
+ujson

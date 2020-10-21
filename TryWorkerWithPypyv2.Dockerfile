@@ -53,13 +53,6 @@ RUN mkdir -p /home/site/wwwroot/ && cd /home/site/wwwroot/
 RUN cd /usr/lib/node_modules/azure-functions-core-tools/bin/workers/python && \
     sed -i 's/"defaultExecutablePath"\:"python"/"defaultExecutablePath":"pypy3"/g' worker.config.json
 
-COPY requirements.txt /
-RUN pypy3 -m pip install --upgrade pip
-RUN pypy3 -m pip install -r /requirements.txt
-
-COPY . /home/site/wwwroot
-
-WORKDIR /home/site/wwwroot
 
 COPY --from=runtime-image ["/azure-functions-host", "/azure-functions-host"]
 COPY --from=runtime-image [ "/workers/python", "/azure-functions-host/workers/python" ]
