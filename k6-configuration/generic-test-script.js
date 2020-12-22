@@ -2,12 +2,17 @@ import { check } from "k6";
 import { Rate } from "k6/metrics";
 import http from "k6/http";
 
+const data = { name: 'OGF_Testing' };
+const headers = { 'Content-Type': 'application/json' };
+
 var FUNCTION = __ENV.FUNCTION;
 var HOSTNAME = __ENV.HOSTNAME || 'localhost';
-var PORT     = __ENV.PORT || '80';
+var PORT     = __ENV.PORT || '';
 var PROTOCOL = __ENV.PROTOCOL || (PORT === '80' || PORT === '7071'  ? 'http' : 'https');
+var NUM_USERS = __ENV.NUM_USERS || 100;
+var TEST_TIME = __ENV.TEST_TIME || "30s";
 
-if (PORT === 'NA') {
+if (PORT == '') {
     var URL = `${PROTOCOL}://${HOSTNAME}/api/${FUNCTION}`
 } else {
     var URL = `${PROTOCOL}://${HOSTNAME}:${PORT}/api/${FUNCTION}`
@@ -19,8 +24,8 @@ var failureRate = new Rate("check_failure_rate");
 // Options
 export let options = {
     stages: [
-        { target: 100, duration: "30s" },
-        { target: 100, duration: "15s" },
+        { target: NUM_USERS, duration: "15s" },
+        { target: NUM_USERS, duration: TEST_TIME },
         { target: 0, duration: "15s" }
     ],
     thresholds: {
@@ -38,7 +43,7 @@ export let options = {
 
 // Main function
 export default function () {
-    let response = http.get(URL);
+    let response = http.post(URL, JSON.stringify(data), { headers: headers });
 
     // check() returns false if any of the specified conditions fail
     let checkRes = check(response, {
