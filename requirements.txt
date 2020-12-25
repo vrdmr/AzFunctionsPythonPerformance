@@ -1,15 +1,15 @@
 azure-functions
-stressypy
+# stressypy
 requests==2.22.0
 aiohttp-requests
 # grpcio
 # grpcio-tools #~=1.26.0
-Pillow
-pytest
+# Pillow
+# pytest
 aiohttp
 aiofiles
 # pandas
 # jupyterlab
-py-spy
-pydevd
-ujson
+# py-spy
+# pydevd
+# ujson
