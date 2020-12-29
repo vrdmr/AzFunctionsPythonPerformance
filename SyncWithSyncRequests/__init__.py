@@ -7,4 +7,4 @@ import azure.functions as func
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     r = requests.get("https://raw.githubusercontent.com/vrdmr/AzFunctionsPythonPerformance/master/TestFile")
-    return func.HttpResponse(f"{r.json()} | ", status_code=200)
+    return func.HttpResponse(f"{r.text} | ", status_code=200)
