@@ -7,8 +7,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # Pi Calculator
     # By Michael Rouse
     pi = 0
-    accuracy = 1000000
-    
+    accuracy = 10000
 
     for i in range(0, accuracy):
         pi += ((4.0 * (-1)**i) / (2*i + 1))
@@ -18,13 +17,3 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         pi += ((4.0 * (-1)**i) / (2*i + 1))
 
     return func.HttpResponse(f"{pi}", status_code=200)
-
-"""
-AsyncHttpTriggerCPUIntensive
-SyncHttpTriggerCPUIntensiveWithSleeps
-AsyncHttpTriggerWithAsyncRequest
-SyncHttpTriggerBusyCPUWithGILLock
-SyncHttpTriggerWithSyncRequests
-AsyncHttpTriggerWithSyncRequests
-SyncHttpTriggerCPUIntensive
-"""

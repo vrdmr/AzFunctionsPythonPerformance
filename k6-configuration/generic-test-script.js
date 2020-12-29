@@ -10,7 +10,8 @@ var HOSTNAME = __ENV.HOSTNAME || 'localhost';
 var PORT     = __ENV.PORT || '';
 var PROTOCOL = __ENV.PROTOCOL || (PORT === '80' || PORT === '7071'  ? 'http' : 'https');
 var NUM_USERS = __ENV.NUM_USERS || 100;
-var TEST_TIME = __ENV.TEST_TIME || "30s";
+var TEST_TIME = __ENV.TEST_TIME || "10s";
+var RAMPUP_TIME = __ENV.RAMPUP_TIME || "10s";
 
 if (PORT == '') {
     var URL = `${PROTOCOL}://${HOSTNAME}/api/${FUNCTION}`
@@ -24,9 +25,9 @@ var failureRate = new Rate("check_failure_rate");
 // Options
 export let options = {
     stages: [
-        { target: NUM_USERS, duration: "15s" },
+        { target: NUM_USERS, duration: RAMPUP_TIME },
         { target: NUM_USERS, duration: TEST_TIME },
-        { target: 0, duration: "15s" }
+        { target: 0, duration: RAMPUP_TIME }
     ],
     thresholds: {
         // We want the 95th percentile of all HTTP request durations to be less than 500ms
