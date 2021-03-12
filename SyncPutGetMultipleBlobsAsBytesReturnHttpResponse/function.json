@@ -12,7 +12,7 @@
       "name": "inputfile1",
       "dataType": "binary",
       "connection": "AzureWebJobsStorage",
-      "path": "python-worker-perf-tests/shmem-test-bytes-1.txt"
+      "path": "python-worker-perf-tests/{infile1}"
     },
     {
       "type": "blob",
@@ -20,7 +20,7 @@
       "name": "inputfile2",
       "dataType": "binary",
       "connection": "AzureWebJobsStorage",
-      "path": "python-worker-perf-tests/shmem-test-bytes-2.txt"
+      "path": "python-worker-perf-tests/{infile2}"
     },
     {
       "type": "blob",
@@ -28,7 +28,7 @@
       "name": "outputfile1",
       "dataType": "binary",
       "connection": "AzureWebJobsStorage",
-      "path": "python-worker-perf-tests/shmem-test-bytes-out-1.txt"
+      "path": "python-worker-perf-tests/{outfile1}"
     },
     {
       "type": "blob",
@@ -36,7 +36,7 @@
       "name": "outputfile2",
       "dataType": "binary",
       "connection": "AzureWebJobsStorage",
-      "path": "python-worker-perf-tests/shmem-test-bytes-out-2.txt"
+      "path": "python-worker-perf-tests/{outfile2}"
     },
     {
       "type": "http",

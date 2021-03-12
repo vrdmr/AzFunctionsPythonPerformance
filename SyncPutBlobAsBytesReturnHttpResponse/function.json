@@ -12,7 +12,7 @@
       "name": "file",
       "dataType": "binary",
       "connection": "AzureWebJobsStorage",
-      "path": "python-worker-perf-tests/shmem-test-bytes-out.txt"
+      "path": "python-worker-perf-tests/{outfile}"
     },
     {
       "type": "http",

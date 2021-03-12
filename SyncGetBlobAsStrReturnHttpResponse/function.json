@@ -12,7 +12,7 @@
       "name": "file",
       "dataType": "string",
       "connection": "AzureWebJobsStorage",
-      "path": "python-worker-perf-tests/shmem-test-str.txt"
+      "path": "python-worker-perf-tests/{infile}"
     },
     {
       "type": "http",
