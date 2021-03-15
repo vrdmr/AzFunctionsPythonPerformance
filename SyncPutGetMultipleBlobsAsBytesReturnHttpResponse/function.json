@@ -1,0 +1,52 @@
+{
+  "scriptFile": "main.py",
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "blob",
+      "direction": "in",
+      "name": "inputfile1",
+      "dataType": "binary",
+      "connection": "AzureWebJobsStorage",
+      "path": "python-worker-perf-tests/{infile1}"
+    },
+    {
+      "type": "blob",
+      "direction": "in",
+      "name": "inputfile2",
+      "dataType": "binary",
+      "connection": "AzureWebJobsStorage",
+      "path": "python-worker-perf-tests/{infile2}"
+    },
+    {
+      "type": "blob",
+      "direction": "out",
+      "name": "outputfile1",
+      "dataType": "binary",
+      "connection": "AzureWebJobsStorage",
+      "path": "python-worker-perf-tests/{outfile1}"
+    },
+    {
+      "type": "blob",
+      "direction": "out",
+      "name": "outputfile2",
+      "dataType": "binary",
+      "connection": "AzureWebJobsStorage",
+      "path": "python-worker-perf-tests/{outfile2}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
