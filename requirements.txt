@@ -13,3 +13,4 @@ aiofiles
 # py-spy
 # pydevd
 # ujson
+numpy==1.19.5
