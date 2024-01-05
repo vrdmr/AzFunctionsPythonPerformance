@@ -10,6 +10,6 @@ aiohttp
 aiofiles
 # pandas
 # jupyterlab
-# py-spy
+py-spy
 # pydevd
 # ujson
